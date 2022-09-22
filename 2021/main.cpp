@@ -26,21 +26,31 @@ ListaOcurrencias crear_lista_ocurrencias (Lista L){
     while (L->sig != NULL)
     {
         L = L->sig;
-        if (L == NULL || L->info != aux ->info)
+        if (L == NULL || L->info != aux->info)
         {
             if (aux == NULL)
             {
                 res->sig = new nodo_ocurrencias;
                 aux = res->sig;
+            }else
+            {
+                aux->sig = new nodo_ocurrencias;
+                aux = aux->sig;
             }
-            
         }
         else
-        {
-            /* code */
-        }
-        
+            aux->cant++;
+        aux->info = L->info;
+        aux->cant = 1;
     }
+    aux->sig = NULL;
+    return res;
+}
+
+// Elimina a lo sumo 'cant' ocurrencias del nodo con información 'elem'
+// Si 'cant' es mayor o igual a la cantidad de ocurrencias de ‘elem' dentro de la lista
+// entonces el nodo debe ser eliminado
+void eliminar_ocurrencias (ListaOcurrencias L, int elem, unsigned cant) {
     
 }
 
