@@ -16,9 +16,6 @@ struct nodo_ocurrencias
 };
 typedef nodo_ocurrencias *ListaOcurrencias;
 
-// Recorre la lista L, crea una lista con múltiples ocurrencias y la retorna
-// Pre-Condición: L está ordenada de menor a mayor, pudiendo contener elementos repetidos
-// Post-Condición: la lista resultante deberá estar ordenada de menor a mayor
 ListaOcurrencias crear_lista_ocurrencias(Lista L)
 {
     ListaOcurrencias res = new nodo_ocurrencias;
@@ -26,11 +23,11 @@ ListaOcurrencias crear_lista_ocurrencias(Lista L)
 
     if (L->sig == NULL)
         return res;
-
-    while (L->sig != NULL)
+    while (L != NULL)
     {
         L = L->sig;
-        if (aux == NULL || L->info != aux->info)
+
+        if (aux == NULL || res->info != L->info)
         {
             if (aux == NULL)
             {
@@ -50,29 +47,4 @@ ListaOcurrencias crear_lista_ocurrencias(Lista L)
     }
     aux->sig = NULL;
     return res;
-}
-
-// Elimina a lo sumo 'cant' ocurrencias del nodo con información 'elem'
-// Si 'cant' es mayor o igual a la cantidad de ocurrencias de ‘elem' dentro de la lista
-// entonces el nodo debe ser eliminado
-void eliminar_ocurrencias(ListaOcurrencias L, int elem, unsigned cant)
-{
-    ListaOcurrencias aux = L;
-    if (aux->sig == NULL) return;
-    while (aux->sig != NULL || L->sig->info < elem)
-    {
-        L= L->sig;
-        if (elem == L->info && L)
-        {
-            
-        }
-        
-    }
-    
-}
-
-int main()
-{
-
-    return 0;
 }
